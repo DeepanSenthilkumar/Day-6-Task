@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Canvas</title>
+    <h1>Circle of Radius</h1>
+    <style>
+        canvas {
+            /* background-image: radial-gradient(yellow,orange,red); */
+            margin-left: 270px;
+        }
+        h1{color: antiquewhite;}
+    </style>
+</head>
+<body style="background-image: radial-gradient(yellow,orange,red)">
+    <canvas id="canvas" width="500" height="500"></canvas>
+    <br>
+    <label for="radius">Radius:</label>
+    <input type="range" id="radius" name="radius" min="10" max="200" value="50">
+    <br>
+    <button onclick="draw()">Draw</button>
+
+    <script>
+        class Circle {
+            constructor(x, y, radius) {
+                this.x = x;
+                this.y = y;
+                this.radius = radius;
+            }
+
+            getRadius() {
+                return this.radius;
+            }
+
+            setRadius(radius) {
+                this.radius = radius;
+            }
+        }
+
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        const radiusInput = document.getElementById('radius');
+
+        let circle = new Circle(canvas.width / 2, canvas.height / 2, 50);
+
+        function draw() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            circle.setRadius(radiusInput.value);
+            ctx.beginPath();
+            ctx.arc(circle.x, circle.y, circle.getRadius(), 0, Math.PI * 2);
+            ctx.stroke();
+        }
+
+        draw();
+
+        radiusInput.addEventListener('input', draw);
+    </script>
+</body>
+</html>
