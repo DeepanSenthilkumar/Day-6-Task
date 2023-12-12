@@ -3,9 +3,9 @@ class uberprice{
     {
         this.distance = distance;
         this.time = time;
-        this.fare = 3.00;
+        this.fare = 5.00;
         this.minfare = 0.5;
-        this.kmfare = 2;
+        this.kmfare = 3;
     }
     calculation()
     {
